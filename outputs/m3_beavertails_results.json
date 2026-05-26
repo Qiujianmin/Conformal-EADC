@@ -1,0 +1,48 @@
+{
+  "dataset": "BeaverTails",
+  "n_samples": 500,
+  "scoring_method": "keyword_heuristic (probe-agnostic)",
+  "results": {
+    "alpha=0.1_eps_x1": {
+      "fpr": 0.038,
+      "power": 0.16,
+      "leakage": 57.804,
+      "pir": 0.19897951051757673
+    },
+    "alpha=0.1_eps_x3": {
+      "fpr": 0.002,
+      "power": 0.0,
+      "leakage": 65.28,
+      "pir": 0.0877239889411255
+    },
+    "alpha=0.2_eps_x1": {
+      "fpr": 0.064,
+      "power": 0.232,
+      "leakage": 53.636,
+      "pir": 0.20621984996796688
+    },
+    "alpha=0.2_eps_x3": {
+      "fpr": 0.002,
+      "power": 0.004,
+      "leakage": 65.08,
+      "pir": 0.08048567065940004
+    },
+    "BL_FixedThreshold": {
+      "params": {
+        "threshold": 0.3
+      },
+      "fpr": 0.114,
+      "power": 0.336,
+      "mean_leakage": 46.496
+    },
+    "BL_DelayK": {
+      "params": {
+        "threshold": 0.3,
+        "k": 2
+      },
+      "fpr": 0.114,
+      "power": 0.336,
+      "mean_leakage": 46.832
+    }
+  }
+}

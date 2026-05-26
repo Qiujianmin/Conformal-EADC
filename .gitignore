@@ -1,22 +1,15 @@
+# Paper (not yet published)
+paper/
+
 # Data (requires application)
 data-FineHarm/
+data-BeaverTails/
 
 # Model weights (large files)
-outputs/best_probe/model.safetensors
+outputs/best_probe/
 
 # Score cache (large files, can be regenerated)
-outputs/score_cache/test_scores.json
-outputs/score_cache/cal_safe_scores.npy
-outputs/score_cache/cal_safe_lengths.npy
-
-# Paper PDF (not yet published)
-paper/main.pdf
-paper/*.aux
-paper/*.bbl
-paper/*.blg
-paper/*.log
-paper/*.out
-paper/*.synctex.gz
+outputs/score_cache/
 
 # OS
 .DS_Store

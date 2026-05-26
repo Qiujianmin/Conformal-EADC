@@ -152,7 +152,80 @@ class DynamicKappa:
 
 
 # ============================================================
-# 3. DKW-bounded ε_t drift profiler (offline)
+# 2b. Adaptive Conformal Inference (ACI, Gibbs & Candès 2021)
+# ============================================================
+
+class AdaptiveConformalInference:
+    """
+    Online adaptive threshold calibration via ACI (Gibbs & Candès 2021).
+
+    Instead of a fixed α for the stopping threshold, ACI maintains an
+    adaptive α_t that is updated online based on past false alarm history:
+
+        α_{t+1} = α_t + γ * (α - err_t)
+
+    where err_t = 1{triggered at t | safe token}.
+
+    This provides distribution-free long-run FPR control:
+        lim_{T→∞} (1/T) Σ err_t = α   almost surely
+    under arbitrary distribution shift, without exchangeability assumptions.
+
+    In our e-process framework, α_t modulates the effective threshold:
+        trigger when E_t ≥ 1/α_t
+    replacing the ad-hoc ε_t × multiplier correction.
+    """
+
+    def __init__(
+        self,
+        alpha: float = 0.05,
+        gamma: float = 0.005,
+        alpha_min: float = 0.001,
+        alpha_max: float = 0.5,
+    ):
+        self.alpha_target = alpha
+        self.gamma = gamma
+        self.alpha_min = alpha_min
+        self.alpha_max = alpha_max
+        self.alpha_t = alpha  # Initialize at target
+        self.t = 0
+        self.cumulative_errors = 0
+
+    def get_threshold(self) -> float:
+        """Get current adaptive threshold α_t."""
+        return self.alpha_t
+
+    def get_log_threshold(self) -> float:
+        """Get ln(1/α_t) for the e-process stopping rule."""
+        return -np.log(max(self.alpha_t, 1e-15))
+
+    def update(self, triggered: bool, is_safe_token: bool):
+        """
+        Update α_t after observing the outcome.
+
+        Args:
+            triggered: whether the e-process crossed the threshold at this step
+            is_safe_token: whether this token belongs to a safe (null) sequence
+        """
+        self.t += 1
+
+        if is_safe_token:
+            err_t = 1.0 if triggered else 0.0
+            self.cumulative_errors += err_t
+            # ACI update: α_{t+1} = α_t + γ * (α - err_t)
+            self.alpha_t = self.alpha_t + self.gamma * (self.alpha_target - err_t)
+            # Clamp to valid range
+            self.alpha_t = max(self.alpha_min, min(self.alpha_max, self.alpha_t))
+
+    @property
+    def empirical_fpr(self) -> float:
+        """Running empirical FPR among safe tokens."""
+        safe_steps = sum(1 for _ in range(self.t))
+        return self.cumulative_errors / max(self.t, 1)
+
+    def reset(self):
+        self.alpha_t = self.alpha_target
+        self.t = 0
+        self.cumulative_errors = 0
 # ============================================================
 
 class DriftProfiler:
@@ -407,6 +480,9 @@ class EProcessEngine:
         # Drift
         drift_profiler: Optional[DriftProfiler] = None,
         epsilon_multiplier: float = 1.0,
+        # ACI (Adaptive Conformal Inference)
+        use_aci: bool = False,
+        aci_gamma: float = 0.005,
         # EADC
         eadc_C_max: int = 10,
         eadc_rho: float = 2.0,
@@ -432,6 +508,14 @@ class EProcessEngine:
         self.drift_profiler = drift_profiler
         self.epsilon_multiplier = epsilon_multiplier
         self.eadc = EADC(C_max=eadc_C_max, rho=eadc_rho)
+
+        # ACI for adaptive FPR control
+        self.use_aci = use_aci
+        self.aci = None
+        if use_aci:
+            self.aci = AdaptiveConformalInference(
+                alpha=alpha, gamma=aci_gamma,
+            )
 
         # Store dynamic κ params for reset
         self.kappa_min = kappa_min
@@ -483,6 +567,12 @@ class EProcessEngine:
         eval_prefix_lengths = []
         eval_risk_scores = []
 
+        # Determine effective threshold (ACI-adaptive or fixed)
+        if self.use_aci and self.aci is not None:
+            effective_log_threshold = self.aci.get_log_threshold()
+        else:
+            effective_log_threshold = self.log_threshold
+
         stopped = False
         stop_prefix_len = None
         n_evaluations = 0
@@ -533,15 +623,33 @@ class EProcessEngine:
             eval_risk_scores.append(float(score_t))
             n_evaluations += 1
 
-            # 6. Stopping check (Ville): ln(E_t) >= ln(1/α)
-            if log_evidence >= self.log_threshold:
+            # 6. Stopping check (Ville): ln(E_t) >= ln(1/α_t)
+            if log_evidence >= effective_log_threshold:
                 stopped = True
                 stop_prefix_len = t
                 break
 
             # 7. EADC: compute next evaluation point
-            step = self.eadc.compute_step(log_evidence, self.log_threshold)
+            step = self.eadc.compute_step(log_evidence, effective_log_threshold)
             t += step
+
+        # 8. ACI update: provide feedback on safe samples
+        if self.use_aci and self.aci is not None:
+            # For safe sequences, any trigger is a false positive
+            # For harmful sequences, pre-onset trigger is a false positive
+            is_safe_token = not is_harmful
+            if is_safe_token:
+                self.aci.update(stopped, is_safe_token=True)
+            else:
+                # For harmful sequences: check if we triggered before onset
+                if stopped and harmful_onset is not None and stop_prefix_len is not None:
+                    if stop_prefix_len < harmful_onset:
+                        self.aci.update(True, is_safe_token=True)
+                    else:
+                        # True positive - don't penalize
+                        pass
+                elif stopped and harmful_onset is None:
+                    self.aci.update(True, is_safe_token=True)
 
         return EProcessResult(
             sample_idx=sample_idx,

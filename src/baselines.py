@@ -12,7 +12,7 @@ Methods:
 All baselines support grid search over parameters for fair comparison.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List, Optional, Dict
 from itertools import product
 
@@ -278,3 +278,59 @@ def evaluate_baseline_batch(
         "n_safe": n_safe,
         "n_harmful": n_harmful,
     }
+
+
+# ============================================================
+# EADC-wrapped baselines (for M2 ablation: Baseline + EADC)
+# ============================================================
+
+class EADCWrappedBaseline:
+    """
+    Wrap any baseline with EADC-style skipping.
+    Evaluates the baseline only at EADC-determined positions.
+    Uses the baseline's own score as the "risk" signal for scheduling.
+
+    This tests whether EADC skipping works for non-conformal methods.
+    """
+
+    def __init__(self, baseline, C_max: int = 10, rho: float = 2.0):
+        self.baseline = baseline
+        self.C_max = C_max
+        self.rho = rho
+
+    def __call__(self, scores: np.ndarray, is_harmful: bool,
+                 harmful_onset: Optional[int], sample_idx: int = 0) -> BaselineResult:
+        T = len(scores)
+        n_evaluations = 0
+        eval_positions = []
+
+        # EADC scheduling based on raw score as risk proxy
+        # Use running max score as "evidence" (higher score = more risk = denser eval)
+        max_score_seen = 0.0
+        t = 1
+        while t <= T:
+            score_t = scores[t - 1]
+            max_score_seen = max(max_score_seen, score_t)
+            n_evaluations += 1
+            eval_positions.append(t)
+
+            # Check if baseline would stop at this position
+            # Run baseline on prefix up to t
+            prefix_scores = scores[:t]
+            result = self.baseline(prefix_scores, is_harmful, harmful_onset, sample_idx)
+            if result.stopped:
+                # Baseline triggered at this eval point
+                return BaselineResult(
+                    sample_idx, True, t, is_harmful, harmful_onset, T,
+                )
+
+            # EADC-style step: higher risk → smaller step
+            risk_ratio = max_score_seen
+            delta_t = max(1, int(self.C_max * ((1.0 - risk_ratio) ** self.rho)))
+            t += delta_t
+
+        return BaselineResult(sample_idx, False, None, is_harmful,
+                              harmful_onset, T)
+
+    def __repr__(self):
+        return f"EADC+{self.baseline}"
