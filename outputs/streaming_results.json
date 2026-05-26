@@ -1,0 +1,738 @@
+{
+  "pvalue_diagnostics": {
+    "n_pvalues": 324051,
+    "mean": 0.5691717980600763,
+    "median": 0.5848970875550911,
+    "ks_statistic": 0.11659553571877221,
+    "ks_pvalue": 0.0,
+    "superuniform_mean": true,
+    "quantile_checks": {
+      "P(p<=0.01)": {
+        "observed": 0.0071717106257965565,
+        "bound": 0.01,
+        "satisfied": "True"
+      },
+      "P(p<=0.05)": {
+        "observed": 0.022027396922089423,
+        "bound": 0.05,
+        "satisfied": "True"
+      },
+      "P(p<=0.1)": {
+        "observed": 0.04053682907937331,
+        "bound": 0.1,
+        "satisfied": "True"
+      },
+      "P(p<=0.2)": {
+        "observed": 0.0883101733986317,
+        "bound": 0.2,
+        "satisfied": "True"
+      },
+      "P(p<=0.5)": {
+        "observed": 0.41266652471370247,
+        "bound": 0.5,
+        "satisfied": "True"
+      }
+    }
+  },
+  "eprocess_pareto": [
+    {
+      "alpha": 0.01,
+      "prefix_fpr": 0.061452513966480445,
+      "traditional_fpr": 0.014996591683708248,
+      "power": 0.8087027914614121,
+      "mean_leakage": 62.00465549348231,
+      "mean_pir": 0.04011966028243763,
+      "controlled": false
+    },
+    {
+      "alpha": 0.02,
+      "prefix_fpr": 0.06443202979515829,
+      "traditional_fpr": 0.015678254942058625,
+      "power": 0.8037766830870279,
+      "mean_leakage": 60.65417057169635,
+      "mean_pir": 0.037398804337204446,
+      "controlled": false
+    },
+    {
+      "alpha": 0.05,
+      "prefix_fpr": 0.07076350093109869,
+      "traditional_fpr": 0.015678254942058625,
+      "power": 0.7939244663382594,
+      "mean_leakage": 57.62380952380953,
+      "mean_pir": 0.033604194997900176,
+      "controlled": false
+    },
+    {
+      "alpha": 0.1,
+      "prefix_fpr": 0.07337057728119181,
+      "traditional_fpr": 0.015678254942058625,
+      "power": 0.7955665024630542,
+      "mean_leakage": 54.58676893576222,
+      "mean_pir": 0.029959339957593766,
+      "controlled": true
+    },
+    {
+      "alpha": 0.15,
+      "prefix_fpr": 0.0782122905027933,
+      "traditional_fpr": 0.015678254942058625,
+      "power": 0.7898193760262726,
+      "mean_leakage": 52.880582524271844,
+      "mean_pir": 0.027082027626574284,
+      "controlled": true
+    },
+    {
+      "alpha": 0.2,
+      "prefix_fpr": 0.0808193668528864,
+      "traditional_fpr": 0.015678254942058625,
+      "power": 0.7832512315270936,
+      "mean_leakage": 52.806451612903224,
+      "mean_pir": 0.025025047102171783,
+      "controlled": true
+    }
+  ],
+  "all_configs": {
+    "v2 (baseline)": [
+      {
+        "alpha": 0.01,
+        "prefix_fpr": 0.09944134078212291,
+        "traditional_fpr": 0.01772324471710975,
+        "power": 0.7504105090311987,
+        "mean_leakage": 43.77663934426229,
+        "mean_pir": 0.04509668274768755,
+        "controlled": false
+      },
+      {
+        "alpha": 0.02,
+        "prefix_fpr": 0.10614525139664804,
+        "traditional_fpr": 0.018404907975460124,
+        "power": 0.7389162561576355,
+        "mean_leakage": 41.72784150156413,
+        "mean_pir": 0.04224575092674983,
+        "controlled": false
+      },
+      {
+        "alpha": 0.05,
+        "prefix_fpr": 0.12216014897579143,
+        "traditional_fpr": 0.0190865712338105,
+        "power": 0.7060755336617406,
+        "mean_leakage": 41.846237731733915,
+        "mean_pir": 0.038011925640826984,
+        "controlled": false
+      },
+      {
+        "alpha": 0.1,
+        "prefix_fpr": 0.13482309124767225,
+        "traditional_fpr": 0.021813224267211998,
+        "power": 0.6896551724137931,
+        "mean_leakage": 38.384441939120634,
+        "mean_pir": 0.03389110554479904,
+        "controlled": false
+      },
+      {
+        "alpha": 0.15,
+        "prefix_fpr": 0.14376163873370576,
+        "traditional_fpr": 0.023858214042263123,
+        "power": 0.6748768472906403,
+        "mean_leakage": 36.42263279445727,
+        "mean_pir": 0.03147083021511046,
+        "controlled": true
+      },
+      {
+        "alpha": 0.2,
+        "prefix_fpr": 0.148975791433892,
+        "traditional_fpr": 0.023858214042263123,
+        "power": 0.6666666666666666,
+        "mean_leakage": 34.93544600938967,
+        "mean_pir": 0.029295492920151454,
+        "controlled": true
+      }
+    ],
+    "eps_x2": [
+      {
+        "alpha": 0.01,
+        "prefix_fpr": 0.07597765363128492,
+        "traditional_fpr": 0.016359918200409,
+        "power": 0.7865353037766831,
+        "mean_leakage": 54.040501446480235,
+        "mean_pir": 0.04217144630978045,
+        "controlled": false
+      },
+      {
+        "alpha": 0.02,
+        "prefix_fpr": 0.0782122905027933,
+        "traditional_fpr": 0.016359918200409,
+        "power": 0.7873563218390804,
+        "mean_leakage": 50.835111542192045,
+        "mean_pir": 0.03937428720359242,
+        "controlled": false
+      },
+      {
+        "alpha": 0.05,
+        "prefix_fpr": 0.08975791433891993,
+        "traditional_fpr": 0.01772324471710975,
+        "power": 0.7701149425287356,
+        "mean_leakage": 47.86127744510978,
+        "mean_pir": 0.03512875789566122,
+        "controlled": false
+      },
+      {
+        "alpha": 0.1,
+        "prefix_fpr": 0.09981378026070764,
+        "traditional_fpr": 0.018404907975460124,
+        "power": 0.7536945812807881,
+        "mean_leakage": 45.252049180327866,
+        "mean_pir": 0.03164967544027967,
+        "controlled": true
+      },
+      {
+        "alpha": 0.15,
+        "prefix_fpr": 0.10502793296089385,
+        "traditional_fpr": 0.018404907975460124,
+        "power": 0.7430213464696224,
+        "mean_leakage": 45.0945945945946,
+        "mean_pir": 0.0289728049037723,
+        "controlled": true
+      },
+      {
+        "alpha": 0.2,
+        "prefix_fpr": 0.10800744878957169,
+        "traditional_fpr": 0.0190865712338105,
+        "power": 0.7380952380952381,
+        "mean_leakage": 44.11413612565445,
+        "mean_pir": 0.026630822997938522,
+        "controlled": true
+      }
+    ],
+    "eps_x3": [
+      {
+        "alpha": 0.01,
+        "prefix_fpr": 0.061452513966480445,
+        "traditional_fpr": 0.014996591683708248,
+        "power": 0.8087027914614121,
+        "mean_leakage": 62.00465549348231,
+        "mean_pir": 0.04011966028243763,
+        "controlled": false
+      },
+      {
+        "alpha": 0.02,
+        "prefix_fpr": 0.06443202979515829,
+        "traditional_fpr": 0.015678254942058625,
+        "power": 0.8037766830870279,
+        "mean_leakage": 60.65417057169635,
+        "mean_pir": 0.037398804337204446,
+        "controlled": false
+      },
+      {
+        "alpha": 0.05,
+        "prefix_fpr": 0.07076350093109869,
+        "traditional_fpr": 0.015678254942058625,
+        "power": 0.7939244663382594,
+        "mean_leakage": 57.62380952380953,
+        "mean_pir": 0.033604194997900176,
+        "controlled": false
+      },
+      {
+        "alpha": 0.1,
+        "prefix_fpr": 0.07337057728119181,
+        "traditional_fpr": 0.015678254942058625,
+        "power": 0.7955665024630542,
+        "mean_leakage": 54.58676893576222,
+        "mean_pir": 0.029959339957593766,
+        "controlled": true
+      },
+      {
+        "alpha": 0.15,
+        "prefix_fpr": 0.0782122905027933,
+        "traditional_fpr": 0.015678254942058625,
+        "power": 0.7898193760262726,
+        "mean_leakage": 52.880582524271844,
+        "mean_pir": 0.027082027626574284,
+        "controlled": true
+      },
+      {
+        "alpha": 0.2,
+        "prefix_fpr": 0.0808193668528864,
+        "traditional_fpr": 0.015678254942058625,
+        "power": 0.7832512315270936,
+        "mean_leakage": 52.806451612903224,
+        "mean_pir": 0.025025047102171783,
+        "controlled": true
+      }
+    ],
+    "t_min=5": [
+      {
+        "alpha": 0.01,
+        "prefix_fpr": 0.09757914338919925,
+        "traditional_fpr": 0.01772324471710975,
+        "power": 0.7528735632183908,
+        "mean_leakage": 43.503567787971456,
+        "mean_pir": 0.042472356246880894,
+        "controlled": false
+      },
+      {
+        "alpha": 0.02,
+        "prefix_fpr": 0.10800744878957169,
+        "traditional_fpr": 0.0190865712338105,
+        "power": 0.7372742200328407,
+        "mean_leakage": 41.30785340314136,
+        "mean_pir": 0.039754136789757484,
+        "controlled": false
+      },
+      {
+        "alpha": 0.05,
+        "prefix_fpr": 0.12290502793296089,
+        "traditional_fpr": 0.02044989775051125,
+        "power": 0.7118226600985221,
+        "mean_leakage": 39.49400218102508,
+        "mean_pir": 0.03547392424851082,
+        "controlled": false
+      },
+      {
+        "alpha": 0.1,
+        "prefix_fpr": 0.13594040968342644,
+        "traditional_fpr": 0.023858214042263123,
+        "power": 0.6912972085385879,
+        "mean_leakage": 36.78128523111612,
+        "mean_pir": 0.0314956094787849,
+        "controlled": false
+      },
+      {
+        "alpha": 0.15,
+        "prefix_fpr": 0.14376163873370576,
+        "traditional_fpr": 0.025221540558963872,
+        "power": 0.6781609195402298,
+        "mean_leakage": 35.4573732718894,
+        "mean_pir": 0.028806009990183463,
+        "controlled": true
+      },
+      {
+        "alpha": 0.2,
+        "prefix_fpr": 0.15083798882681565,
+        "traditional_fpr": 0.024539877300613498,
+        "power": 0.6633825944170771,
+        "mean_leakage": 34.278301886792455,
+        "mean_pir": 0.026473070893546845,
+        "controlled": true
+      }
+    ],
+    "eps_x2+t5": [
+      {
+        "alpha": 0.01,
+        "prefix_fpr": 0.07858472998137803,
+        "traditional_fpr": 0.015678254942058625,
+        "power": 0.7832512315270936,
+        "mean_leakage": 51.647230320699705,
+        "mean_pir": 0.03996909921301278,
+        "controlled": false
+      },
+      {
+        "alpha": 0.02,
+        "prefix_fpr": 0.08156424581005586,
+        "traditional_fpr": 0.015678254942058625,
+        "power": 0.7824302134646962,
+        "mean_leakage": 48.930460333006856,
+        "mean_pir": 0.037106410067171955,
+        "controlled": false
+      },
+      {
+        "alpha": 0.05,
+        "prefix_fpr": 0.09162011173184358,
+        "traditional_fpr": 0.01772324471710975,
+        "power": 0.7676518883415435,
+        "mean_leakage": 46.222668004012036,
+        "mean_pir": 0.03304667455892023,
+        "controlled": false
+      },
+      {
+        "alpha": 0.1,
+        "prefix_fpr": 0.10204841713221602,
+        "traditional_fpr": 0.018404907975460124,
+        "power": 0.7495894909688013,
+        "mean_leakage": 44.35876288659794,
+        "mean_pir": 0.029249680732426033,
+        "controlled": false
+      },
+      {
+        "alpha": 0.15,
+        "prefix_fpr": 0.10577281191806331,
+        "traditional_fpr": 0.018404907975460124,
+        "power": 0.7422003284072249,
+        "mean_leakage": 42.984375,
+        "mean_pir": 0.026382604423234625,
+        "controlled": true
+      },
+      {
+        "alpha": 0.2,
+        "prefix_fpr": 0.11098696461824953,
+        "traditional_fpr": 0.021131561008861623,
+        "power": 0.7307060755336617,
+        "mean_leakage": 43.043157894736844,
+        "mean_pir": 0.024498261304892556,
+        "controlled": true
+      }
+    ]
+  },
+  "best_config": "eps_x3",
+  "stress_test": {
+    "with_epsilon": {
+      "prefix_fpr": 0.07076350093109869,
+      "power": 0.7939244663382594,
+      "leakage": 57.62380952380953,
+      "pir": 0.033604194997900176
+    },
+    "without_epsilon": {
+      "prefix_fpr": 0.16945996275605213,
+      "power": 0.6288998357963875,
+      "leakage": 31.22596754057428,
+      "pir": 0.04260364698127088
+    }
+  },
+  "baselines": {
+    "FixedThreshold": {
+      "best": {
+        "params": {
+          "threshold": 0.95
+        },
+        "fpr": 0.06294227188081937,
+        "power": 0.784072249589491,
+        "mean_leakage": 63.79397930385701
+      },
+      "frontier": [
+        {
+          "params": {
+            "threshold": 0.95
+          },
+          "fpr": 0.06294227188081937,
+          "power": 0.784072249589491,
+          "mean_leakage": 63.79397930385701
+        },
+        {
+          "params": {
+            "threshold": 0.9
+          },
+          "fpr": 0.08417132216014897,
+          "power": 0.7651888341543513,
+          "mean_leakage": 51.526108374384236
+        },
+        {
+          "params": {
+            "threshold": 0.8
+          },
+          "fpr": 0.11694599627560522,
+          "power": 0.7257799671592775,
+          "mean_leakage": 39.37820512820513
+        },
+        {
+          "params": {
+            "threshold": 0.7
+          },
+          "fpr": 0.13891992551210428,
+          "power": 0.6888341543513957,
+          "mean_leakage": 34.69796380090498
+        },
+        {
+          "params": {
+            "threshold": 0.5
+          },
+          "fpr": 0.18733705772811918,
+          "power": 0.6067323481116584,
+          "mean_leakage": 27.75064935064935
+        },
+        {
+          "params": {
+            "threshold": 0.3
+          },
+          "fpr": 0.24022346368715083,
+          "power": 0.5082101806239737,
+          "mean_leakage": 22.49922480620155
+        }
+      ]
+    },
+    "SWMA": {
+      "best": {
+        "params": {
+          "threshold": 0.9,
+          "window": 10
+        },
+        "fpr": 0.062197392923649904,
+        "power": 0.7963875205254516,
+        "mean_leakage": 62.250936329588015
+      },
+      "frontier": [
+        {
+          "params": {
+            "threshold": 0.9,
+            "window": 10
+          },
+          "fpr": 0.062197392923649904,
+          "power": 0.7963875205254516,
+          "mean_leakage": 62.250936329588015
+        },
+        {
+          "params": {
+            "threshold": 0.9,
+            "window": 7
+          },
+          "fpr": 0.06778398510242085,
+          "power": 0.7873563218390804,
+          "mean_leakage": 59.758293838862556
+        },
+        {
+          "params": {
+            "threshold": 0.9,
+            "window": 5
+          },
+          "fpr": 0.07076350093109869,
+          "power": 0.7832512315270936,
+          "mean_leakage": 58.35912129894938
+        },
+        {
+          "params": {
+            "threshold": 0.9,
+            "window": 3
+          },
+          "fpr": 0.07486033519553073,
+          "power": 0.777504105090312,
+          "mean_leakage": 55.4488416988417
+        },
+        {
+          "params": {
+            "threshold": 0.7,
+            "window": 10
+          },
+          "fpr": 0.09832402234636871,
+          "power": 0.7594417077175698,
+          "mean_leakage": 42.922448979591834
+        },
+        {
+          "params": {
+            "threshold": 0.7,
+            "window": 7
+          },
+          "fpr": 0.10540037243947858,
+          "power": 0.7463054187192119,
+          "mean_leakage": 40.83367983367983
+        },
+        {
+          "params": {
+            "threshold": 0.7,
+            "window": 5
+          },
+          "fpr": 0.11135940409683426,
+          "power": 0.7364532019704434,
+          "mean_leakage": 38.93037974683544
+        },
+        {
+          "params": {
+            "threshold": 0.7,
+            "window": 3
+          },
+          "fpr": 0.11992551210428305,
+          "power": 0.7200328407224958,
+          "mean_leakage": 36.9719222462203
+        },
+        {
+          "params": {
+            "threshold": 0.5,
+            "window": 10
+          },
+          "fpr": 0.1378026070763501,
+          "power": 0.6921182266009852,
+          "mean_leakage": 33.032842582106454
+        },
+        {
+          "params": {
+            "threshold": 0.5,
+            "window": 7
+          },
+          "fpr": 0.14748603351955308,
+          "power": 0.6748768472906403,
+          "mean_leakage": 31.952270081490106
+        },
+        {
+          "params": {
+            "threshold": 0.5,
+            "window": 5
+          },
+          "fpr": 0.15344506517690876,
+          "power": 0.6642036124794746,
+          "mean_leakage": 31.21775147928994
+        },
+        {
+          "params": {
+            "threshold": 0.5,
+            "window": 3
+          },
+          "fpr": 0.16610800744878956,
+          "power": 0.6420361247947455,
+          "mean_leakage": 30.055079559363524
+        },
+        {
+          "params": {
+            "threshold": 0.3,
+            "window": 10
+          },
+          "fpr": 0.20186219739292366,
+          "power": 0.5779967159277504,
+          "mean_leakage": 25.867305061559506
+        },
+        {
+          "params": {
+            "threshold": 0.3,
+            "window": 7
+          },
+          "fpr": 0.20707635009310987,
+          "power": 0.5673234811165846,
+          "mean_leakage": 25.196378830083564
+        },
+        {
+          "params": {
+            "threshold": 0.3,
+            "window": 5
+          },
+          "fpr": 0.2111731843575419,
+          "power": 0.5582922824302134,
+          "mean_leakage": 24.60820367751061
+        },
+        {
+          "params": {
+            "threshold": 0.3,
+            "window": 3
+          },
+          "fpr": 0.22048417132216014,
+          "power": 0.5410509031198686,
+          "mean_leakage": 23.755102040816325
+        }
+      ]
+    },
+    "DelayK": {
+      "best": {
+        "params": {
+          "threshold": 0.9,
+          "k": 5
+        },
+        "fpr": 0.061824953445065174,
+        "power": 0.7963875205254516,
+        "mean_leakage": 61.36482694106642
+      },
+      "frontier": [
+        {
+          "params": {
+            "threshold": 0.9,
+            "k": 5
+          },
+          "fpr": 0.061824953445065174,
+          "power": 0.7963875205254516,
+          "mean_leakage": 61.36482694106642
+        },
+        {
+          "params": {
+            "threshold": 0.9,
+            "k": 3
+          },
+          "fpr": 0.07001862197392923,
+          "power": 0.784072249589491,
+          "mean_leakage": 58.154580152671755
+        },
+        {
+          "params": {
+            "threshold": 0.9,
+            "k": 2
+          },
+          "fpr": 0.07523277467411546,
+          "power": 0.7750410509031199,
+          "mean_leakage": 55.84555984555985
+        },
+        {
+          "params": {
+            "threshold": 0.7,
+            "k": 5
+          },
+          "fpr": 0.0931098696461825,
+          "power": 0.7676518883415435,
+          "mean_leakage": 42.546827794561935
+        },
+        {
+          "params": {
+            "threshold": 0.7,
+            "k": 3
+          },
+          "fpr": 0.10614525139664804,
+          "power": 0.7471264367816092,
+          "mean_leakage": 38.732570239334024
+        },
+        {
+          "params": {
+            "threshold": 0.7,
+            "k": 2
+          },
+          "fpr": 0.11880819366852886,
+          "power": 0.7233169129720853,
+          "mean_leakage": 36.586021505376344
+        },
+        {
+          "params": {
+            "threshold": 0.5,
+            "k": 5
+          },
+          "fpr": 0.12402234636871508,
+          "power": 0.7200328407224958,
+          "mean_leakage": 33.48966267682263
+        },
+        {
+          "params": {
+            "threshold": 0.5,
+            "k": 3
+          },
+          "fpr": 0.1418994413407821,
+          "power": 0.687192118226601,
+          "mean_leakage": 31.62029646522235
+        },
+        {
+          "params": {
+            "threshold": 0.5,
+            "k": 2
+          },
+          "fpr": 0.16089385474860335,
+          "power": 0.6510673234811166,
+          "mean_leakage": 30.187951807228917
+        },
+        {
+          "params": {
+            "threshold": 0.3,
+            "k": 5
+          },
+          "fpr": 0.16983240223463686,
+          "power": 0.6420361247947455,
+          "mean_leakage": 27.872682323856612
+        },
+        {
+          "params": {
+            "threshold": 0.3,
+            "k": 3
+          },
+          "fpr": 0.18696461824953445,
+          "power": 0.6083743842364532,
+          "mean_leakage": 25.583333333333332
+        },
+        {
+          "params": {
+            "threshold": 0.3,
+            "k": 2
+          },
+          "fpr": 0.20633147113594041,
+          "power": 0.5706075533661741,
+          "mean_leakage": 24.281163434903046
+        }
+      ]
+    }
+  },
+  "calibration_stats": {
+    "n_cal_scores": 659595,
+    "cal_score_mean": 0.0853759907777862,
+    "cal_score_std": 0.22407906529520874,
+    "cal_length_min": 1,
+    "cal_length_max": 1717,
+    "cal_length_median": 131.0
+  }
+}

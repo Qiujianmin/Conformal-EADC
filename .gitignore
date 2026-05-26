@@ -1,0 +1,27 @@
+# Data (requires application)
+data-FineHarm/
+
+# Model weights (large files)
+outputs/best_probe/model.safetensors
+
+# Score cache (large files, can be regenerated)
+outputs/score_cache/test_scores.json
+outputs/score_cache/cal_safe_scores.npy
+outputs/score_cache/cal_safe_lengths.npy
+
+# Paper PDF (not yet published)
+paper/main.pdf
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+
+# OS
+.DS_Store
+__pycache__/
+*.pyc
+
+# IDE
+.claude/
