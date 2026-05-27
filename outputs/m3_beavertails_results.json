@@ -1,48 +1,100 @@
 {
-  "dataset": "BeaverTails",
+  "dataset": "BeaverTails (PKU-Alignment, NeurIPS 2023)",
   "n_samples": 500,
-  "scoring_method": "keyword_heuristic (probe-agnostic)",
+  "n_safe": 250,
+  "n_unsafe": 250,
+  "scoring_method": "RoBERTa probe (trained on FineHarm, zero-shot transfer)",
+  "harmful_onset_method": "probe_estimated (first position where score > 0.5)",
+  "calibration_source": "FineHarm training split (cross-dataset)",
   "results": {
-    "alpha=0.1_eps_x1": {
-      "fpr": 0.038,
-      "power": 0.16,
-      "leakage": 57.804,
-      "pir": 0.19897951051757673
+    "ours_a0.05_eps1": {
+      "fpr": 0.034,
+      "power": 0.42,
+      "leakage": 22.9,
+      "pir": 0.09028413055528708,
+      "traditional_fpr": 0.068
     },
-    "alpha=0.1_eps_x3": {
-      "fpr": 0.002,
-      "power": 0.0,
-      "leakage": 65.28,
-      "pir": 0.0877239889411255
+    "ours_a0.05_eps2": {
+      "fpr": 0.02,
+      "power": 0.344,
+      "leakage": 26.628,
+      "pir": 0.08441166018488998,
+      "traditional_fpr": 0.04
     },
-    "alpha=0.2_eps_x1": {
-      "fpr": 0.064,
-      "power": 0.232,
-      "leakage": 53.636,
-      "pir": 0.20621984996796688
+    "ours_a0.05_eps3": {
+      "fpr": 0.01,
+      "power": 0.304,
+      "leakage": 29.78,
+      "pir": 0.08107350746459509,
+      "traditional_fpr": 0.02
     },
-    "alpha=0.2_eps_x3": {
-      "fpr": 0.002,
-      "power": 0.004,
-      "leakage": 65.08,
-      "pir": 0.08048567065940004
+    "ours_a0.1_eps1": {
+      "fpr": 0.036,
+      "power": 0.436,
+      "leakage": 21.84,
+      "pir": 0.08404525873312747,
+      "traditional_fpr": 0.072
     },
-    "BL_FixedThreshold": {
+    "ours_a0.1_eps2": {
+      "fpr": 0.022,
+      "power": 0.36,
+      "leakage": 25.524,
+      "pir": 0.07809945962793208,
+      "traditional_fpr": 0.044
+    },
+    "ours_a0.1_eps3": {
+      "fpr": 0.016,
+      "power": 0.332,
+      "leakage": 28.6,
+      "pir": 0.07333471266653442,
+      "traditional_fpr": 0.032
+    },
+    "ours_a0.2_eps1": {
+      "fpr": 0.046,
+      "power": 0.44,
+      "leakage": 20.57429718875502,
+      "pir": 0.07465368835661647,
+      "traditional_fpr": 0.088
+    },
+    "ours_a0.2_eps2": {
+      "fpr": 0.024,
+      "power": 0.372,
+      "leakage": 24.848,
+      "pir": 0.06900423008544679,
+      "traditional_fpr": 0.048
+    },
+    "ours_a0.2_eps3": {
+      "fpr": 0.014,
+      "power": 0.324,
+      "leakage": 28.96,
+      "pir": 0.06427149228376362,
+      "traditional_fpr": 0.028
+    },
+    "bl_FixedThreshold": {
       "params": {
-        "threshold": 0.3
+        "threshold": 0.5
       },
-      "fpr": 0.114,
-      "power": 0.336,
-      "mean_leakage": 46.496
+      "fpr": 0.086,
+      "power": 0.544,
+      "mean_leakage": 12.632
     },
-    "BL_DelayK": {
+    "bl_SWMA": {
       "params": {
-        "threshold": 0.3,
+        "threshold": 0.5,
+        "window": 3
+      },
+      "fpr": 0.066,
+      "power": 0.5,
+      "mean_leakage": 15.392
+    },
+    "bl_DelayK": {
+      "params": {
+        "threshold": 0.5,
         "k": 2
       },
-      "fpr": 0.114,
-      "power": 0.336,
-      "mean_leakage": 46.832
+      "fpr": 0.064,
+      "power": 0.5,
+      "mean_leakage": 15.956
     }
   }
 }
